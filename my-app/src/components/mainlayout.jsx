@@ -1,14 +1,38 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-app</title>
-  </head>
-  <body>
-    <nav id="navigation"></nav>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+import React from "react";
+import { Outlet, Link } from "react-router-dom";
+
+const MainLayout = () => {
+  return (
+    <div className="app-container">
+      {/* Header */}
+      <header className="header">
+        <nav className="nav">
+          <h1 className="logo">MyApp</h1>
+          <ul className="nav-links">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main className="main-content">
+        <Outlet /> {/* Renders the matched child route */}
+      </main>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} MyApp. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+};
+
+export default MainLayout;
